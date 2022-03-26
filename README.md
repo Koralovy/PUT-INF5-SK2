@@ -10,7 +10,7 @@ Target system for server: Linux (Arch)
 Target system for client: Windows (or any supporting Qt5)
 
 1. Server compilation `gcc -Wall src/server/srv.c -o srv.out`
-2. Client compilation in Qt Creator (client package included as a release)
+2. Client compilation in Qt Creator (client package included as a zip file)
 
 ## Description of the designed communication protocol:
 ```
