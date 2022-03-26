@@ -1,6 +1,6 @@
 # Computer Networks 2 Project - Remote File Compression Server&Client
 
-Authors: Jan Bylicki, Jan Chlebek, Marcin Kasznia
+Authors: Jan Bylicki, Jan Chlebek
 
 ![](./GUI.png)
 
