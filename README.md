@@ -1,4 +1,4 @@
-# Computer Networks 2 Project - remote file compression
+# Computer Networks 2 Project - Remote File Compression Server&Client
 
 Authors: Jan Bylicki, Jan Chlebek, Marcin Kasznia
 
@@ -10,7 +10,7 @@ Target system for server: Linux (Arch)
 Target system for client: Windows (or any supporting Qt5)
 
 1. Server compilation `gcc -Wall src/server/srv.c -o srv.out`
-2. Client compilation in Qt Creator (client package included as a release)
+2. Client compilation in Qt Creator (client package included as a zip file)
 
 ## Description of the designed communication protocol:
 ```
@@ -54,26 +54,26 @@ C - ack
 ## Description of the server implementation
 Server - srv.c - a file containing the whole implementation of the concurrent server, which can be described as follows:
 ```
-    1. wait for a connection from the client
-    2. split the operation:
-        parent process - jump back to waiting for another clients.
-        child process - jump below
-         1. receive the archive initialisation command
-         2. reply to the client that you have received the command
-         3. receive another command
-         4.  until you receive 'a end' command
-               1. reply to the client that you have received the command
-               2. process the received commands and in the case of command 'f' receive a file of specified size
-               3. receive another command
-         5. split the operation
-           1. parent process
-               1. wait for the child process to finish
-               2. send the command to send the archive file to the client
-               3. wait for the command receipt signal
-               4. send file
-               5. wait for the file receive signal
-               6. end operation
-           2. child process: Execute the zip command on all received files
+1. wait for a connection from the client
+2. split the operation:
+    parent process - jump back to waiting for another clients.
+    child process - jump below
+     1. receive the archive initialisation command
+     2. reply to the client that you have received the command
+     3. receive another command
+     4.  until you receive 'a end' command
+           1. reply to the client that you have received the command
+           2. process the received commands and in the case of command 'f' receive a file of specified size
+           3. receive another command
+     5. split the operation
+       1. parent process
+           1. wait for the child process to finish
+           2. send the command to send the archive file to the client
+           3. wait for the command receipt signal
+           4. send file
+           5. wait for the file receive signal
+           6. end operation
+       2. child process: Execute the zip command on all received files
 ```
 ## Description of the client implementation
 Client - QT5.15.2 MinGW 64-bit
